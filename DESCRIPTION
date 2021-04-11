@@ -1,0 +1,10 @@
+Package: mrt.functions
+Type: Package
+Title: Contains many created functions
+Version: 0.1.0
+Author: matteo.miotto
+Maintainer: The package maintainer <matteo.miotto9@gmail.com>
+Description: 
+License: 
+Encoding: UTF-8
+LazyData: true
