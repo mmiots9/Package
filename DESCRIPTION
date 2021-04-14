@@ -6,7 +6,7 @@ Authors@R: person("Matteo", "Miotto", email = "matteo.miotto9@gmail.com",
   role = c("aut", "cre"))
 Description: Contains many created functions
 URL: https://github.com/mmiots9/Package
-License: 
+License: MIT
 Encoding: UTF-8
 LazyData: true
 Imports:
