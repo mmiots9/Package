@@ -19,5 +19,7 @@ Imports:
   ggplot2,
   rlang,
   dplyr,
-  magrittr
+  magrittr,
+  kableExtra,
+  tibble
 RoxygenNote: 7.1.1

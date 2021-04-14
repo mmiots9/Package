@@ -4,7 +4,7 @@
 \alias{par.2aov}
 \title{Parametric/non parametric test evaluation for multivariate data}
 \usage{
-mrt.par.2aov(x, y, z, type.of.int = "+" or "*")
+mrt.par.2aov(x, y, z, type.of.int = "+")
 }
 \arguments{
 \item{x}{Numeric vector (or dataframe column)}
@@ -24,7 +24,7 @@ mrt.par.2aov(x, y, z, type.of.int = "+" or "*")
 Get info about normality and variances of the given vectors in ordere to decide wether use 2-way ANOVA or Kruskal-Wallis
 }
 \examples{
-mrt.par.2aov(x = rnorm(100), y = sample(rep(c(0,1), 50)), z = sample(rep(c("a", "b", "c", "d"), 25)), type.of.int = "*")
+par.2aov(rnorm(100), sample(rep(c(0,1), 50)), sample(rep(c("a", "b", "c", "d"), 25)), type.of.int = "*")
 }
 \author{
 Matteo Miotto

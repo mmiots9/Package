@@ -5,7 +5,6 @@
 \title{Descriptive statistics table}
 \usage{
 desc_table(data, group.var = NULL, cont.var = NULL, cat.var = NULL, paired = F)
-group.var, cont.var and cat.var can be omitted in the inputs, as the function will ask for them
 }
 \arguments{
 \item{data}{Dataframe to use}
@@ -24,12 +23,6 @@ A table with the following columns: variable name - group_1 values (mean ± sd f
 \description{
 This function returns a descriptive statistics table for both categorical and continues variable for a 2-group dataset.
 It calculates also the p-value choosing the right statistical analysis.
-}
-\examples{
-desc_table(mtcars, group.var = "am", cont.var = c("mpg", "disp"), cat.var = c("cyl", "vs"), paired = F)
-
-# cont.var and cat.var can be set as NA. Function will NOT ask for them
-desc_table(mtcars, group.var = , cont.var = NA, cat.var = c("cyl", "vs"), paired = F)
 }
 \seealso{
 \code{\link{desc_kable}} for descriptive kable

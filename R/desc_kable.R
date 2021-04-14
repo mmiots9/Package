@@ -3,7 +3,6 @@
 #' @description This function returns a descriptive statistics kable for both categorical and continues variable for a 2-group dataset.
 #' It calculates also the p-value choosing the right statistical analysis.
 #' @usage desc_kable(data, group.var = NULL, cont.var = NULL, cat.var = NULL, paired = F)
-#' group.var, cont.var and cat.var can be omitted in the inputs, as the function will ask for them
 #' @param data Dataframe to use
 #' @param group.var String of the grouping variable column name. The grouping variable MUST have only 2 different values
 #' @param cont.var Chr string (or vector) of the continuous variable/s column name to take into account
@@ -11,11 +10,6 @@
 #' @param paired Logical, are continuous variables paired?
 #' @returns A kable with the following columns: variable name - group_1 values (mean ± sd for continuous, n(\%) for categorical) - group_2 values (mean ± sd for continuous, n(\%) for categorical) - p-value
 #' Moreover, statistical tests are summarized as footnote
-#' @examples
-#' desc_kable(mtcars, group.var = "am", cont.var = c("mpg", "disp"), cat.var = c("cyl", "vs"), paired = F)
-#'
-#' # cont.var and cat.var can be set as NA. Function will NOT ask for them
-#' desc_kable(mtcars, group.var = , cont.var = NA, cat.var = c("cyl", "vs"), paired = F)
 #' @seealso \code{\link{desc_table}} for descriptive table
 #' @author Matteo Miotto
 #'

@@ -1,7 +1,7 @@
 #' @name par.2aov
 #' @title Parametric/non parametric test evaluation for multivariate data
 #' @description Get info about normality and variances of the given vectors in ordere to decide wether use 2-way ANOVA or Kruskal-Wallis
-#' @usage mrt.par.2aov(x, y, z, type.of.int = "+" or "*")
+#' @usage mrt.par.2aov(x, y, z, type.of.int = "+")
 #' @param x Numeric vector (or dataframe column)
 #' @param y A vector of factors
 #' @param z A vector of factors
@@ -12,7 +12,7 @@
 #' \item{Shapiro interazione}{optional, only if type.of.int = "*". Return the W and p-value coming from the shapiro test of all the possible interaction of y and z over x}
 #'
 #' @examples
-#' mrt.par.2aov(x = rnorm(100), y = sample(rep(c(0,1), 50)), z = sample(rep(c("a", "b", "c", "d"), 25)), type.of.int = "*")
+#' par.2aov(rnorm(100), sample(rep(c(0,1), 50)), sample(rep(c("a", "b", "c", "d"), 25)), type.of.int = "*")
 #' @author Matteo Miotto
 #'
 
