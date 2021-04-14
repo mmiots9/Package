@@ -2,10 +2,8 @@
 
 export(desc_kable)
 export(desc_table)
-export(mrt.par.2aov)
 export(par.2aov)
 export(pcr.lab.th)
-export(vicenzi_lab_pcr)
 import(Rmisc)
 import(dplyr)
 importFrom(Rmisc,summarySE)
