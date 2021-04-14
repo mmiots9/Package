@@ -1,3 +1,7 @@
+#' @import Rmisc
+#' @export
+
+
 mrt.par.2aov <- function(x, y, z, type.of.int = NA){
 
   # 1. controlli
@@ -125,6 +129,7 @@ mrt.par.2aov <- function(x, y, z, type.of.int = NA){
     return(res)
 }
 
+#' @export
 vicenzi_lab_pcr = function(){
 
   library(readxl)
@@ -209,6 +214,7 @@ vicenzi_lab_pcr = function(){
 
 }
 
+#' @export
 desc_table <- function(data, group.var = NULL, cont.var = NULL, cat.var = NULL, paired = F){
 
   # librerie
@@ -249,18 +255,24 @@ desc_table <- function(data, group.var = NULL, cont.var = NULL, cat.var = NULL, 
   colnames(tabella) <- nomi_colonne
 
   # Chiedo quali sono le continue
-  if (is_empty(cont.var)) {
+  if (is.null(cont.var)) {
     cont.var <- dlg_list(c(colnames(data), "preselect"), multiple = T, title = "Select continue variable/s, if none are present, press 0",
                          preselect = "preselect")$res
     cont.var <- cont.var[-length(cont.var)]
+    if (length(cont.var) == 0) {cont.var <- NA}
   }
 
+  suppressWarnings(if (is.na(cont.var)) {cont.var <- NULL})
+
   # Chiedo quali sono le categoriche
-  if (is_empty(cat.var)) {
+  if (is.null(cat.var)) {
     cat.var <- dlg_list(c(colnames(data), "preselect"), multiple = T, title = "Select categorical variable/s, if none are present, press 0",
                         preselect = "preselect")$res
     cat.var <- cat.var[-length(cat.var)]
+    if (length(cat.var) == 0) {cat.var <- NA}
   }
+
+  suppressWarnings(if (is.na(cat.var)) {cat.var <- NULL})
 
 
   # statistica sulle continue
@@ -316,15 +328,15 @@ desc_table <- function(data, group.var = NULL, cont.var = NULL, cat.var = NULL, 
     for (i in seq_along(cat.var)) {
       # creo tabelle contingenza
       cont_tab <- table(unlist(data[, cat.var[i]]), unlist(data[, group.var]))
-      perc1 <- round(cont_tab[, 1]/sum(cont_tab[, 1])*100, 3)
-      perc2 <- round(cont_tab[, 2]/sum(cont_tab[, 2])*100, 3)
+      perc1 <- round(cont_tab[, 1]/sum(cont_tab[, 1])*100, 2)
+      perc2 <- round(cont_tab[, 2]/sum(cont_tab[, 2])*100, 2)
       perc_tab <- cbind(perc1, perc2)
 
       # creo vettori con freq (%)
-      group1_cat <- paste(cont_tab[, 1], ' (', perc_tab[, 1], ')', sep="")
+      group1_cat <- paste(cont_tab[, 1], ' (', perc_tab[, 1], '%)', sep="")
       names(group1_cat) <- as.character(1:length(rownames(cont_tab)))
 
-      group2_cat <- paste(cont_tab[, 2], ' (', perc_tab[, 2], ')', sep="")
+      group2_cat <- paste(cont_tab[, 2], ' (', perc_tab[, 2], '%)', sep="")
       names(group2_cat) <- as.character(1:length(rownames(cont_tab)))
 
 
@@ -370,6 +382,7 @@ desc_table <- function(data, group.var = NULL, cont.var = NULL, cat.var = NULL, 
   return(tabella)
 }
 
+#' @export
 desc_kable <- function(data, group.var = NULL, cont.var = NULL, cat.var = NULL, paired = F){
 
   # librerie
@@ -412,18 +425,24 @@ desc_kable <- function(data, group.var = NULL, cont.var = NULL, cat.var = NULL, 
   colnames(tabella) <- nomi_colonne
 
   # Chiedo quali sono le continue
-  if (is_empty(cont.var)) {
-    cont.var <- dlg_list(c(colnames(data), "preselect"), multiple = T, title = "Select continue Variable/s, if none are present, press 0",
+  if (is.null(cont.var)) {
+    cont.var <- dlg_list(c(colnames(data), "preselect"), multiple = T, title = "Select continue variable/s, if none are present, press 0",
                          preselect = "preselect")$res
     cont.var <- cont.var[-length(cont.var)]
+    if (length(cont.var) == 0) {cont.var <- NA}
   }
 
+  suppressWarnings(if (is.na(cont.var)) {cont.var <- NULL})
+
   # Chiedo quali sono le categoriche
-  if (is_empty(cat.var)) {
-    cat.var <- dlg_list(c(colnames(data), "preselect"), multiple = T, title = "Select categorical Variable/s, if none are present, press 0",
+  if (is.null(cat.var)) {
+    cat.var <- dlg_list(c(colnames(data), "preselect"), multiple = T, title = "Select categorical variable/s, if none are present, press 0",
                         preselect = "preselect")$res
     cat.var <- cat.var[-length(cat.var)]
+    if (length(cat.var) == 0) {cat.var <- NA}
   }
+
+  suppressWarnings(if (is.na(cat.var)) {cat.var <- NULL})
 
 
   # statistica sulle continue
@@ -479,15 +498,15 @@ desc_kable <- function(data, group.var = NULL, cont.var = NULL, cat.var = NULL, 
     for (i in seq_along(cat.var)) {
       # creo tabelle contingenza
       cont_tab <- table(unlist(data[, cat.var[i]]), unlist(data[, group.var]))
-      perc1 <- round(cont_tab[, 1]/sum(cont_tab[, 1])*100, 3)
-      perc2 <- round(cont_tab[, 2]/sum(cont_tab[, 2])*100, 3)
+      perc1 <- round(cont_tab[, 1]/sum(cont_tab[, 1])*100, 2)
+      perc2 <- round(cont_tab[, 2]/sum(cont_tab[, 2])*100, 2)
       perc_tab <- cbind(perc1, perc2)
 
       # creo vettori con freq (%)
-      group1_cat <- paste(cont_tab[, 1], ' (', perc_tab[, 1], ')', sep="")
+      group1_cat <- paste(cont_tab[, 1], ' (', perc_tab[, 1], '%)', sep="")
       names(group1_cat) <- as.character(1:length(rownames(cont_tab)))
 
-      group2_cat <- paste(cont_tab[, 2], ' (', perc_tab[, 2], ')', sep="")
+      group2_cat <- paste(cont_tab[, 2], ' (', perc_tab[, 2], '%)', sep="")
       names(group2_cat) <- as.character(1:length(rownames(cont_tab)))
 
 
@@ -570,3 +589,5 @@ desc_kable <- function(data, group.var = NULL, cont.var = NULL, cat.var = NULL, 
 
   return(tabella_html)
 }
+
+

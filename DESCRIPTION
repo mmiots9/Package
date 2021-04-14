@@ -1,10 +1,22 @@
 Package: mrt.functions
 Type: Package
-Title: Contains many created functions
-Version: 0.1.0
-Author: matteo.miotto
-Maintainer: The package maintainer <matteo.miotto9@gmail.com>
-Description: 
+Title: Mrt package
+Version: 0.1.1
+Authors@R: person("Matteo", "Miotto", email = "matteo.miotto9@gmail.com",
+  role = c("aut", "cre"))
+Description: Contains many created functions
 License: 
 Encoding: UTF-8
 LazyData: true
+Imports:
+  readxl,
+  svGUI,
+  svDialogs,
+  knitr,
+  xlsx,
+  Rmisc,
+  ggplot2,
+  rlang,
+  dplyr,
+  magrittr
+RoxygenNote: 7.1.1
