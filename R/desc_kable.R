@@ -19,6 +19,7 @@
 #' @importFrom svDialogs dlg_list
 #' @import dplyr
 #' @importFrom kableExtra kable_classic footnote add_header_above footnote_marker_alphabet kbl
+#' @export
 
 
 
