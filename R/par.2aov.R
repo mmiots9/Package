@@ -96,8 +96,7 @@ par.2aov <- function(x, y, z, type.of.int = NA){
     ksq[3]    <- bartint$statistic
     bardf[3]  <- bartint$parameter
     barpv[3]  <- bartint$p.value
-  }
-  else {
+  } else {
     barcat[3] <- NA
     ksq[3]    <- NA
     bardf[3]  <- NA
@@ -107,8 +106,9 @@ par.2aov <- function(x, y, z, type.of.int = NA){
   # creo dataframe
   bartot <- data.frame(barcat, ksq, bardf, barpv)
   names(bartot) <- c("categoric", "k-squared", "df", "pval")
+  if(type.of.int != "*") {
   bartot <- bartot[-3,]
-
+  }
 
   # 8. Shapiro se *
   if(type.of.int == "*"){
@@ -117,7 +117,7 @@ par.2aov <- function(x, y, z, type.of.int = NA){
     mat <- tapply(x, list(y, z), shapiro.test)
     nm1 <- outer(rownames(mat), colnames(mat), FUN=paste)
     nm2 <- setNames(c(mat), nm1)
-    nom <- strsplit(names(nm2), split = "") # creo lista con fattori categorie
+    nom <- strsplit(names(nm2), split = " ") # creo lista con fattori categorie
 
     # creo vettori interesse
     prima   <- c()
