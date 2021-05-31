@@ -1,11 +1,11 @@
-Package: mrt.functions
+Package: miotsdata
 Type: Package
-Title: Mrt package
+Title: Miotsdata
 Version: 0.1.1
 Authors@R: person("Matteo", "Miotto", email = "matteo.miotto9@gmail.com",
   role = c("aut", "cre"))
 Description: Contains many created functions
-URL: https://github.com/mmiots9/Package
+URL: https://github.com/mmiots9/miotsdata
 License: MIT
 Encoding: UTF-8
 LazyData: true
