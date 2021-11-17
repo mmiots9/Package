@@ -89,7 +89,7 @@ desc_table <- function(data, group.var = NULL, cont.var = NULL, cat.var = NULL, 
       nome_var <- cont.var[i]
 
       # tabella summary e valori ctrl e intervention
-      summary_tab <- summarySE(data = data, measurevar = cont.var[i], groupvars = group.var)
+      summary_tab <- summarySE(data = data, measurevar = cont.var[i], groupvars = group.var, na.rm = T)
       group1_val <- paste(as.character( round( summary_tab[1, cont.var[i]] , 3)), '±',
                           as.character( round( summary_tab[1, "sd"] , 3)))
 
@@ -158,11 +158,11 @@ desc_table <- function(data, group.var = NULL, cont.var = NULL, cat.var = NULL, 
 
       # calcolo
       if (gr_cate > 2 | num_tot > 100) {
-        p_cat  <- suppressWarnings(chisq.test(cont_tab)$p.val)
+        p_cat  <- suppressWarnings(chisq.test( unlist( data[, cat.var[i]]), unlist( data[, group.var]))$p.val)
         method_cat <- suppressWarnings(chisq.test(cont_tab)$method)
       } else {
         if (all(val_att >5)) {
-          p_cat  <- suppressWarnings(chisq.test(cont_tab, correct = T)$p.val)
+          p_cat  <- suppressWarnings(chisq.test( unlist( data[, cat.var[i]]), unlist( data[, group.var]), correct = T)$p.val)
           method_cat <- suppressWarnings(chisq.test(cont_tab, correct = T)$method)
         } else {
           p_cat  <- suppressWarnings(fisher.test(cont_tab)$p.val)
