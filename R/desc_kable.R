@@ -48,7 +48,8 @@ desc_kable <- function(data, group.var = NULL, cont.var = NULL, cat.var = NULL, 
   # ricavo numerosità gruppi
   numerosita <- data %>%
     group_by_at(vars(one_of(group.var))) %>%
-    summarize(n = n())
+    summarize(n = n()) %>%
+    as.data.frame(stringAsFactors = F)
 
   # Creo nomi colonne tabella e li cambio
   group1_name <- paste(numerosita[1, 1], ' (n = ', as.character(numerosita[1, 2]), ')', sep = '')
